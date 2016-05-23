@@ -10,7 +10,7 @@ class CustomCSVReport(XLSReport):
     list_report = ('id', 'content', 'created_on', 'updated_on', uppercase_content)
 
     def get_cell_format(self, request, column_spec, column_display, column_index, row_index,
-                        cell_value, cell_serialized_value):
+                        cell_value):
         if row_index is None:
             return {'bold': True}
         else:
