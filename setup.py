@@ -1,19 +1,13 @@
-from setuptools import setup, find_packages
+from setuptools import setup, find_namespace_packages
 
 setup(
     name='django-trackmodels-xls-ritual',
-    version='0.0.3',
-    namespace_packages=['grimoire', 'grimoire.django'],
-    packages=find_packages(exclude=['trackmodels_xls_proj', 'trackmodels_xls_proj.*', 'sample', 'sample.*']),
-    package_data={
-        'grimoire.django.tracked': [
-            'locale/*/LC_MESSAGES/*.*'
-        ]
-    },
+    version='1.0.0',
+    packages=find_namespace_packages(include=['grimoire.django.*']),
     url='https://github.com/luismasuelli/django-trackmodels-xls-ritual',
     license='LGPL',
     author='Luis y Anita',
     author_email='luismasuelli@hotmail.com',
     description='XLSX report plugin for django-trackmodels-ritual',
-    install_requires=['Django>=1.7', 'XlsxWriter>=0.8.7', 'django-trackmodels-ritual>=0.0.12']
+    install_requires=['Django>=2.2', 'XlsxWriter>=0.8.7', 'django-trackmodels-ritual>=1.0.0']
 )

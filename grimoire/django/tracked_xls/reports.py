@@ -1,10 +1,11 @@
 import datetime
+from io import StringIO
+import re
+import pytz
+import xlsxwriter
 from grimoire.django.tracked.reports import RichFormatTrackingReport
 from django.utils.timezone import now
-from django.utils.six import text_type, string_types, StringIO
-import xlsxwriter
-import pytz
-import re
+
 
 _REMOVE_INVALID_CHARS = re.compile(r'[^ daAmbByYpIHMSf%/:\.-]')
 _REMOVE_INVALID_MARKS = re.compile(r'%[^daAmbByYpIHMSf%]')
@@ -17,6 +18,7 @@ _MIN_BEFORE_SECONDS = re.compile(r'%M(?=:%S)')
 _FRAC_AFTER_SECONDS = re.compile(r'(?=%S)\.%f')
 _REMOVE_REMAINING_MARKS = re.compile(r'%[^%]')
 _TRIM_NONALPHA_CHARS = re.compile(r'^\s*[/:\.-]*|[/:\.-]*\s*$')
+
 
 def strftime2xls(fmt):
     """
@@ -194,7 +196,7 @@ class XLSReport(RichFormatTrackingReport):
             elif isinstance(data, datetime.date):
                 format = dict(format, num_format=date_format)
                 worksheet.write_datetime(row, col, data, preprocess_format(format))
-            elif isinstance(data, string_types):
+            elif isinstance(data, str):
                 return worksheet.write_string(row, col, data, preprocess_format(format))
             else:
                 return worksheet.write(row, col, data, preprocess_format(format))
