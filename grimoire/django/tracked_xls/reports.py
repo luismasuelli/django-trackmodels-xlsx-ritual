@@ -1,5 +1,5 @@
 import datetime
-from io import StringIO
+from io import BytesIO
 import re
 import pytz
 import xlsxwriter
@@ -161,7 +161,7 @@ class XLSReport(RichFormatTrackingReport):
         :return: string
         """
 
-        stream = StringIO()
+        stream = BytesIO()
         workbook = xlsxwriter.Workbook(stream, {'in_memory': True})
         worksheet = workbook.add_worksheet(self.get_xls_worksheet_name(request))
         formats = {}

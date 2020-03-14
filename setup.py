@@ -1,9 +1,9 @@
-from setuptools import setup, find_namespace_packages
+from setuptools import setup
 
 setup(
     name='django-trackmodels-xls-ritual',
     version='1.0.0',
-    packages=find_namespace_packages(include=['grimoire.django.*']),
+    packages=['grimoire.django.tracked_xls'],
     url='https://github.com/luismasuelli/django-trackmodels-xls-ritual',
     license='LGPL',
     author='Luis y Anita',
