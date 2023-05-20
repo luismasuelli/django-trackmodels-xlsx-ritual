@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='django-trackmodels-xls-ritual',
-    version='1.0.1',
+    version='1.1.1',
     packages=['grimoire.django.tracked_xls'],
     url='https://github.com/luismasuelli/django-trackmodels-xls-ritual',
     license='LGPL',
